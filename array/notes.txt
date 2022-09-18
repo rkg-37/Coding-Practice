@@ -1,0 +1,57 @@
+kadane`s algorithm
+=====================
+The idea of Kadane’s algorithm is to maintain a maximum subarray sum ending at every
+index ‘i’ of the given array and update the maximum sum obtained by comparing it with the
+maximum sum of the subarray ending at every index ‘i’.
+
+At any given index ‘i’ of the array, we can either:
+
+● Append the element at index ‘i’ to the maximum sum subarray(so just add the
+element at index ‘i’ to the maximum you’ve found so far).
+
+● Start a new subarray starting from index ‘i’.
+
+Appending an element at index ‘i’ to the maximum sum subarray obtained so far is beneficial
+if the sum till index ‘i-1’ is non-negative, otherwise it is better to start a new subarray starting
+from index ‘i’ and update the maximum sum obtained accordingly.
+
+
+pseudocode:
+
+function Kadane(arr, N)
+
+// Initializing curSum to 0 and maxSum to min value, denoting an empty
+subarray
+
+curSum = 0
+maxSum = INT_MIN
+
+for idx = 0 to N-1
+curSum = curSum + arr[idx]
+
+// Taking the max of maxSum and the curSum of the subarray
+
+maxSum = max(maxSum,curSum)
+// Checking if the curSum becomes negative
+
+if curSum < 0
+curSum = 0
+return maxSum
+============================================================================================================================================
+
+
+
+Possible to form a triangle from array values
+
+
+Given an array of integers, we need to find out whether it is possible to construct at least one non-degenerate 
+triangle using array values as its sides. In other words, we need to find out 3 such array indices which can 
+become sides of a non-degenerate triangle. 
+
+A Simple Solution is to generate all triplets and for every triplet check if it forms a triangle or not by checking above three conditions.
+
+An Efficient Solution is use sorting. First, we sort the array then we loop once and we will check three consecutive elements 
+of this array if any triplet satisfies arr[i] + arr[i+1] > arr[i+2], then we will output that triplet as our final result.
+
+
+============================================================================================================================================

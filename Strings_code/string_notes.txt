@@ -1,0 +1,143 @@
+Strings in java 
+
+Memory allotment of String
+
+Whenever a String Object is created as a literal, the object will be created in String 
+constant pool. This allows JVM to optimize the initialization of String literal.
+
+1. character array
+    char[] arr = {'a','b','c','d','e'};
+
+2. Strings class (Immutable)
+    String str = "geeks for geeks";
+    String str = new String("geeks");
+
+3. StringBuffer class (mutable) (thread-safe)
+    StringBuffer str = new StringBuffer("geeks");
+
+4. StringBuilder class (mutable) (non-threadsafe)
+    StringBuilder str = new StringBuilder("geeks");
+
+
+
+importants :
+
+1.
+
+If you want to store this string in the constant pool then you will need to “intern” it.
+
+For example:
+
+String internedString = str.intern(); 
+// this will add the string to string constant pool.
+
+The string can also be declared using new operator i.e. dynamically allocated. In case of String are dynamically 
+allocated they are assigned a new memory location in heap. This string will not be added to String constant pool.
+
+2.
+
+StringTokenizer class in Java is used to break a string into tokens. 
+
+Example:
+
+stringtokenizer
+
+A StringTokenizer object internally maintains a current position within the string to be tokenized. Some operations 
+advance this current position past the characters processed. A token is returned by taking a substring of the string 
+that was used to create the StringTokenizer object.
+
+eg : 
+    "heelo i am raj" --> StringTokenizer  --> Tokens --> "heelo","i","am","raj"
+
+StringJoiner is a class in java.util package which is used to construct a sequence of characters(strings) separated by
+a delimiter and optionally starting with a supplied prefix and ending with a supplied suffix. Though this can also 
+with the help of StringBuilder class to append delimiter after each string, StringJoiner provides an easy way to do 
+that without much code to write.
+
+Syntax:
+
+public StringJoiner(CharSequence delimiter)
+
+
+
+3. StringBuffer
+
+java.lang.StringBuffer extends (or inherits from) Object class.
+All Implemented Interfaces of StringBuffer class: Serializable, Appendable, CharSequence.
+public final class StringBuffer extends Object implements Serializable, CharSequence, Appendable.
+String buffers are safe for use by multiple threads. The methods can be synchronized wherever necessary so that all the
+operations on any particular instance behave as if they occur in some serial order.
+Whenever an operation occurs involving a source sequence (such as appending or inserting from a source sequence) 
+this class synchronizes only on the string buffer performing the operation, not on the source.
+
+Methods	Action Performed
+append()	Used to add text at the end of the existing text.
+length()	The length of a StringBuffer can be found by the length( ) method
+capacity()	the total allocated capacity can be found by the capacity( ) method
+charAt()	 
+delete()	Deletes a sequence of characters from the invoking object
+deleteCharAt()	Deletes the character at the index specified by loc
+ensureCapacity()	Ensures capacity is at least equals to the given minimum.
+insert()	Inserts text at the specified index position
+length()	Returns length of the string  
+reverse()	Reverse the characters within a StringBuffer object
+replace()	Replace one set of characters with another set inside a StringBuffer object
+
+4. 
+StringBuffer
+
+Methods in Java StringBuilder
+StringBuilder append(X x): This method appends the string representation of the X type argument to the sequence.
+
+StringBuilder appendCodePoint(int codePoint): This method appends the string representation of the codePoint argument to this sequence.
+
+int capacity(): This method returns the current capacity.
+
+char charAt(int index): This method returns the char value in this sequence at the specified index.
+
+IntStream chars(): This method returns a stream of int zero-extending the char values from this sequence.
+
+int codePointAt(int index): This method returns the character (Unicode code point) at the specified index.
+
+int codePointBefore(int index): This method returns the character (Unicode code point) before the specified index.
+
+int codePointCount(int beginIndex, int endIndex): This method returns the number of Unicode code points in the specified text range of this sequence.
+
+IntStream codePoints(): This method returns a stream of code point values from this sequence.
+
+StringBuilder delete(int start, int end): This method removes the characters in a substring of this sequence.
+
+StringBuilder deleteCharAt(int index): This method removes the char at the specified position in this sequence.
+
+void ensureCapacity(int minimumCapacity): This method ensures that the capacity is at least equal to the specified minimum.
+
+void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin): This method characters are copied from this sequence into the destination character array dst.
+
+int indexOf(): This method returns the index within this string of the first occurrence of the specified substring.
+
+StringBuilder insert(int offset, boolean b): This method inserts the string representation of the booalternatelean argument into this sequence.
+
+StringBuilder insert(): This method inserts the string representation of the char argument into this sequence.
+
+int lastIndexOf(): This method returns the index within this string of the last occurrence of the specified substring.
+
+int length(): This method returns the length (character count).
+
+int offsetByCodePoints(int index, int codePointOffset): This method returns the index within this sequence that is offset from the given index by codePointOffset code points.
+
+StringBuilder replace(int start, int end, String str): This method replaces the characters in a substring of this sequence with characters in the specified String.
+
+StringBuilder reverse(): This method causes this character sequence to be replaced by the reverse of the sequence.
+
+void setCharAt(int index, char ch): In this method, the character at the specified index is set to ch.
+
+void setLength(int newLength): This method sets the length of the character sequence.
+
+CharSequence subSequence(int start, int end): This method returns a new character sequence that is a subsequence of this sequence.
+
+String substring(): This method returns a new String that contains a subsequence of characters currently contained in this character sequence.
+
+String toString(): This method returns a string representing the data in this sequence.
+
+void trimToSize(): This method attempts to reduce storage used for the character sequence. 
+
