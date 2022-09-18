@@ -1,0 +1,81 @@
+import java.util.*;
+import java.lang.*;
+public class search_in_rotatedarray{  
+    // approach first
+    public static int bs_findmin(int[] arr,int s,int e){
+        while(s<=e){
+            int m = s+(e-s)/2;
+            
+            if(arr[m]<arr[e]){
+                e=m;
+            }else{
+                s = m+1;
+            }
+        }
+        return e;
+    }
+    public static int bs_func(int[] arr,int s,int e,int k){
+        while(s<=e){
+            int m = s+(e-s)/2;
+            if(arr[m] == k)
+                return m;
+            else if(arr[m] < k)
+                s = m+1;
+            else    
+                e=m-1;
+        }
+        return -1;
+    }
+
+
+    public static int solve(int[] arr,int n,int k){
+        int index = bs_findmin(arr,0,n-1);
+        int first = bs_func(arr,0,index-1,k);
+        int second = bs_func(arr,index,n-1,k);
+        if(first==-1 && second !=-1)
+            return second;
+        else if (first !=-1 && second ==-1)
+            return first;
+        else    
+            return -1;
+    }
+
+    // approach two
+    static int search(int arr[], int l, int h, int k)
+    {
+        // l: The starting index
+        // h: The ending index, you have to search the key in this range
+        // Complete this function
+        while(l<=h){
+            int mid = (l+h)/2;
+            if(arr[mid]==k)
+                return mid;
+            
+            if(arr[l] <= arr[mid]){
+                if(k >= arr[l] && k<= arr[mid])
+                    h = mid-1;
+                else
+                    l = mid+1;
+            }else{
+                if(k >= arr[mid] && k<= arr[h])
+                    l = mid+1;
+                else
+                    h = mid-1;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args){
+        Scanner s = new Scanner(System.in);
+        System.out.println("enter length and a sorted array");
+        int n = s.nextInt();
+        int[] arr = new int[n];
+        for(int i=0;i<n;i++)
+            arr[i] = s.nextInt();
+        int k = s.nextInt();
+        System.out.println("approach two :"+search(arr,0,n-1,k));
+        System.out.println("approach one :"+solve(arr,n,k));
+        
+    }
+}

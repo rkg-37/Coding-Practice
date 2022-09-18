@@ -1,0 +1,26 @@
+class search_in_matrix{
+
+	static int matSearch (int[][] mat, int N, int M, int X)
+	{
+	    // your code here
+	    int i=0,j=M-1;
+        while(i<N && j>=0){
+            if(mat[i][j] == X)
+                return 1;
+            if(mat[i][j] > X)
+                j--;
+            else
+                i++;
+        }       
+        return 0;
+	}
+
+    public static void main(String[] args){
+        int N = 3, M = 3;
+        int[][] mat = { {3,30,38 },
+         {44, 52, 54 },
+         {57, 60, 69}};
+        int X = 62;
+        System.out.println(matSearch(mat,N,M,X));
+    }
+}

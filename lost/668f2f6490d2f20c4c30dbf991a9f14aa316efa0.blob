@@ -1,0 +1,30 @@
+class ceil_sorted_array{
+    
+    // Function to find floor of x
+    // arr: input array
+    // n is the size of array
+    static int findCeil(long arr[], int n, long x)
+    {
+        int start=0,end=n-1;
+        int mid = 0;
+        while(start<=end){
+            mid = (start+end)/2;
+            if(arr[mid]==x)
+                return mid;
+            else if(arr[mid] > x){
+                end = mid-1;
+            }else{
+                start = mid+1;
+            }
+        }
+        return start;
+    }
+    public static void main(String[] args){
+        long[] arr = {1,2,5,7,8};
+        int n = 5;
+        long k = 6;
+        System.out.println(findCeil(arr,n,k));
+    }
+    
+}
+

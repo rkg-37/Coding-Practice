@@ -1,0 +1,56 @@
+import java.util.*;
+import java.lang.*;
+public class print{
+    // public static void solve(int n){ 
+    //     if(n>1)
+    //         solve(n-1);
+    //     System.out.print(n+" ");
+    // }
+    // static ArrayList<Long> factorialNumbers(long N){
+    //     ArrayList<Long> a = new ArrayList<>();
+    //     int i=2;
+    //     Long curr=1L;
+    //     while(curr <= N ){
+    //         if(curr<N)
+    //             a.add((long)curr);
+    //         curr=curr*i;
+    //         i++;
+    //     }
+    //     return a;
+    // }
+
+    public static void merge(long arr1[], long arr2[], int n, int m) 
+    {
+        int i=n-1;
+        int j=0;
+        while(i>=0 && j<m)
+        {
+            if(arr1[i]>arr2[j])
+                {
+                    arr1[i] = arr1[i] ^ arr2[j] ^ (arr2[j] = arr1[i]);
+                    j++;
+                    i--;
+                }
+            else
+                break;
+        }
+       Arrays.sort(arr1);
+       Arrays.sort(arr2);
+       
+        for(long x : arr1)
+            System.out.print(x+" ");
+        
+        for(long x : arr2)
+            System.out.print(x+" ");
+    }
+    
+    public static void main(String[] args){
+        // solve(5);
+        // ArrayList<Long> ans = new ArrayList<>();
+        // ans = factorialNumbers(10);
+        // System.out.println(ans.toString());
+        long[] arr1={1L,3L,5L,7L};
+        long[] arr2={0L,2L,6L,8L,9L};
+        merge(arr1,arr2,4,5);
+    }
+}

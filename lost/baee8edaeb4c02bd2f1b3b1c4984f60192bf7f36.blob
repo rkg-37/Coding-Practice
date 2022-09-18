@@ -1,0 +1,43 @@
+import java.util.*;
+class maxsum_subarray {
+    
+    public static long pairWithMaxSum(long arr[], long N)
+    {
+        // Your code goes here
+        if(arr.length==2)
+            return arr[0]+arr[1];
+     
+        long maxsum=0;
+        
+        for(int i=0;i<N-1;i++){
+            
+            long min=arr[i],min2n= arr[i+1];
+            if(arr[i] > arr[i+1])
+                min = arr[i];
+                min2n = arr[i+1];
+                
+            for(int j=i+2;j<N;j++){
+                if(arr[j]<min){
+                    min2n = min;
+                    min = arr[j];
+                }else if(arr[j]>min && arr[j]<min2n){
+                    min2n = arr[j];
+                }
+            }
+            System.out.println("min = "+min+" min2n ="+min2n);
+            if(maxsum<(min+min2n))
+                maxsum = min+min2n;
+            
+        }
+        return maxsum;
+    }
+    public static void main(String[] args){
+        Scanner s = new Scanner(System.in);
+        long n = s.nextLong();
+        long[] nums=new long[(int)n];
+        for(int i=0;i<n;i++)
+            nums[i] = s.nextInt();
+        System.out.println(pairWithMaxSum(nums,n));
+    }
+    
+}

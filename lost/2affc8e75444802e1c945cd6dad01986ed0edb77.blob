@@ -1,0 +1,53 @@
+import java.util.*;
+import java.lang.*;
+public class fastandlastoccurence{  
+
+    public static int bs(int[] arr,int s,int e,int k,boolean f){
+        int res = -1;
+        while(s<=e){
+            int m = s+(e-s)/2;
+            if(arr[m] == k){
+                //System.out.println(m);
+                res = m;
+                if(f==false){
+                    e = m-1;
+                }else{
+                    s=m+1;
+                }
+                //return m;               
+            }else if(arr[m]>k){
+                e=m-1;
+            }else{
+                s=m+1;
+            }
+        }
+        return res;
+    }
+
+    public static int[] solve(int[] arr,int n,int k){
+        boolean f = false;
+        int[] ans = new int[2];
+        ans[0] = bs(arr,0,n-1,k,f);
+        if(ans[0]==-1){
+            ans[1]=-1;
+        }else{
+            f = true;
+            ans[1] = bs(arr,ans[0]+1,n-1,k,f);
+            if(ans[1]==-1){
+                ans[1] = ans[0];
+            }
+        }
+        return ans;
+    }
+
+    public static void main(String[] args){
+        Scanner s = new Scanner(System.in);
+        System.out.println("enter length and a sorted array");
+        int n = s.nextInt();
+        int[] arr = new int[n];
+        for(int i=0;i<n;i++)
+            arr[i] = s.nextInt();
+        int k = s.nextInt();
+        System.out.println(Arrays.toString(solve(arr,n,k)));
+    }
+}

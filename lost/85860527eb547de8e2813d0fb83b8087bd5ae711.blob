@@ -1,0 +1,30 @@
+import java.util.*;
+import java.lang.*;
+public class remove_duplicates{
+    
+    public static int removeDuplicates(int[] nums) {
+        int n = nums.length;
+        int i=0,j=1,count=1;
+        while(j<n){
+            if(nums[i]==nums[j]){
+                j++;
+            }else{
+                i++;
+                nums[i] = nums[j];
+                count++;
+                j++;
+            }
+        }
+        System.out.println(Arrays.toString(nums));
+        return count;
+    }
+
+    public static void main(String[] args){
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        int[] nums=new int[n];
+        for(int i=0;i<n;i++)
+            nums[i] = s.nextInt();
+        System.out.println(removeDuplicates(nums));
+    }
+}

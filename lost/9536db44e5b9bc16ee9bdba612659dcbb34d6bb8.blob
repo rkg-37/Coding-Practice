@@ -1,0 +1,61 @@
+import java.util.*;
+import java.lang.*;
+public class insert_in_pos{
+    
+    static int bs(int[] arr, int n, int k) {
+        // code here
+        int start=0,end = n-1;
+        while(start<=end){
+            int mid = (start+end)/2;
+            if(arr[mid]==k)
+                return mid;
+            else if(arr[mid] < k)
+                start = mid+1;
+            else
+                end = mid-1;
+        }
+        return -1; 
+    }
+
+    static int bs_pos(int[] arr, int n, int k) {
+        // code here
+        int start=0,end = n-1;
+        while(start<=end){
+            int mid = (start+end)/2;
+            if(arr[mid]==k)
+                return mid;
+            else if(arr[mid] < k)
+                start = mid+1;
+            else
+                end = mid-1;
+        }
+        return end+1;
+    }
+    static int min_of_two(int a,int b,int k){
+        return (Math.abs(a-k) > Math.abs(b-k))? Math.abs(b-k):Math.abs(a-k); 
+    }
+
+    public static void main(String[] args){
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        int[] arr = new int[n];
+        for(int i=0;i<n;i++){
+            arr[i] = s.nextInt();
+        }
+        int k = s.nextInt();
+        int pos = bs(arr,n,k);
+        if(pos==-1){
+            pos = bs_pos(arr,n,k);
+            if(pos == 0){
+                System.out.println(min_of_two(arr[pos],arr[pos+1],k));
+            }else if(pos==n-1){
+                System.out.println(min_of_two(arr[pos],arr[pos-1],k));
+            }else{
+                System.out.println((min_of_two(arr[pos],arr[pos-1],k),min_of_two(arr[pos],arr[pos-1],k)));
+            }
+        }else 
+            System.out.println(0);
+
+
+    }
+}
